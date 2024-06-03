@@ -24,4 +24,10 @@ void main() {
       expect(() => account.transfer(null), throwsA(isA<NullAmountException>()));
     });
   });
+
+  group("Account interest rates", (){
+    test("Deve-se aplicar um juros de 1% quando o tipo de conta for conta corrente", (){});
+
+    test("Deve-se aplicar um juros de 3% quando o tipo de conta for conta poupança", (){});
+  });
 }
