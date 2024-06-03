@@ -7,22 +7,20 @@ void main() {
   setUp(() {
     account = Account(id: 123, name: "Beto", cpf: "123.123.123-22", balance: 100);
   });
-  group("Testes de transferência", (){
-    test("Testa uma transferência", (){
+  group("Account Transfer Tests", (){
+    test("Deve atualizar corretamente o valor do saldo quando a transferência for válida", (){
       account.transfer(100);
 
       expect(account.balance, 0);
     });
-    test("Transfere valores negativos", (){
+    test("Deve lançar InvalidAmountExcption quando passar um valor inválido", (){
       expect(() => account.transfer(0), throwsA(isA<InvalidAmountException>()));
       expect(() => account.transfer(-100), throwsA(isA<InvalidAmountException>()));
     });
-    test("Transfere qualquer coisa que não seja números", (){
-    });
-    test("Transfere valor maior que disponível no balanço", (){
+    test("Deve lançar InsuficientAmountException quando o valor de transferência for maior do que o saldo disponível", (){
       expect(() => account.transfer(101), throwsA(isA<InsuficientAmountException>()));
     });
-    test("Transfere um valor nulo", (){
+    test("Deve lançar NullAmountException quando o valor de uma transferência for nulo", (){
       expect(() => account.transfer(null), throwsA(isA<NullAmountException>()));
     });
   });
