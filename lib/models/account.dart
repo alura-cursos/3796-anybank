@@ -16,7 +16,8 @@ class InvalidAmountException implements Exception {
 
 enum AccountTypes {
   checkings,
-  savings
+  savings,
+  investment
 }
 
 class Account {
@@ -51,7 +52,16 @@ class Account {
   }
 
   void applyInterest() {
-    double interest = (AccountTypes.checkings == accountType) ? 0.01 : 0.03;
+    double interest = 0.01;
+
+    if (accountType == AccountTypes.savings) {
+      interest = 0.03;
+    }
+
+    if (accountType == AccountTypes.investment) {
+      interest = 0.07;
+    }
+
     balance += balance * interest;
   }
 }

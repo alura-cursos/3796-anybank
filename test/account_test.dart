@@ -38,5 +38,13 @@ void main() {
 
       expect(savingsAccount.balance, 103);
     });
+
+    test("Deve-se aplicar um juros de 7% quando o tipo de conta for conta investimento", (){
+      final Account investmentAccount = Account(id: 123, name: "Beto", cpf: "123.123.123-22", balance: 100, accountType: AccountTypes.investment);
+
+      investmentAccount.applyInterest();
+
+      expect(investmentAccount.balance, 107);
+    });
   });
 }
