@@ -12,7 +12,11 @@ class Account {
     required this.balance,
   });
 
-  void transfer(amount) {
-    balance = balance - amount;
+  void transfer(double? amount) {
+    if (amount != null) {
+      if (amount <= balance && amount > 0) {
+        balance = balance - amount;
+      }
+    }
   }
 }
