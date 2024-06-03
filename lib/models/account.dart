@@ -51,6 +51,7 @@ class Account {
   }
 
   void applyInterest() {
+    double interest = (AccountTypes.checkings == accountType) ? 0.01 : 0.03;
     balance += balance * interest;
   }
 }

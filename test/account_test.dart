@@ -26,8 +26,17 @@ void main() {
   });
 
   group("Account interest rates", (){
-    test("Deve-se aplicar um juros de 1% quando o tipo de conta for conta corrente", (){});
+    test("Deve-se aplicar um juros de 1% quando o tipo de conta for conta corrente", (){
+      account.applyInterest();
+      expect(account.balance, 101);
+    });
 
-    test("Deve-se aplicar um juros de 3% quando o tipo de conta for conta poupança", (){});
+    test("Deve-se aplicar um juros de 3% quando o tipo de conta for conta poupança", (){
+      final Account savingsAccount = Account(id: 123, name: "Beto", cpf: "123.123.123-22", balance: 100, accountType: AccountTypes.savings);
+
+      savingsAccount.applyInterest();
+
+      expect(savingsAccount.balance, 103);
+    });
   });
 }
