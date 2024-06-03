@@ -21,10 +21,7 @@ void main() {
     test("Transfere qualquer coisa que não seja números", (){
     });
     test("Transfere valor maior que disponível no balanço", (){
-      account.transfer(101);
-
-      expect(account.balance, 100);
-
+      expect(() => account.transfer(101), throwsA(isA<InsuficientAmountException>()));
     });
     test("Transfere 0", (){
       account.transfer(0);
