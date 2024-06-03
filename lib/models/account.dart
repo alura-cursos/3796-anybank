@@ -9,6 +9,11 @@ class InsuficientAmountException implements Exception {
   String toString() => "Saldo insuficiênte para realizar a transferência";
 }
 
+class InvalidAmountException implements Exception {
+  @override
+  String toString() => "O valor da transferência deve ser maior do que 0";
+}
+
 class Account {
   final int id;
   final String name;
@@ -31,8 +36,10 @@ class Account {
       throw InsuficientAmountException();
     }
 
-    if (amount <= balance && amount > 0) {
-      balance = balance - amount;
+    if (amount <= 0) {
+      throw InvalidAmountException();
     }
+
+    balance = balance - amount;
   }
 }
