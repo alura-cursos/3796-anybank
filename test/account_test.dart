@@ -32,9 +32,7 @@ void main() {
       expect(account.balance, 100);
     });
     test("Transfere um valor nulo", (){
-      account.transfer(null);
-
-      expect(account.balance, 100);
+      expect(() => account.transfer(null), throwsA(isA<NullAmountException>()));
     });
   });
 }
