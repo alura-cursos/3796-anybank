@@ -14,17 +14,24 @@ class InvalidAmountException implements Exception {
   String toString() => "O valor da transferência deve ser maior do que 0";
 }
 
+enum AccountTypes {
+  checkings,
+  savings
+}
+
 class Account {
   final int id;
   final String name;
   final String cpf;
   double balance;
+  final AccountTypes accountType;
 
   Account({
     required this.id,
     required this.name,
     required this.cpf,
     required this.balance,
+    this.accountType = AccountTypes.checkings,
   });
 
   void transfer(double? amount) {
@@ -41,5 +48,9 @@ class Account {
     }
 
     balance = balance - amount;
+  }
+
+  void applyInterest() {
+    balance += balance * interest;
   }
 }
